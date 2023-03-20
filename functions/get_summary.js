@@ -14,7 +14,7 @@ exports.handler = async function (event, context) {
     },
     body: JSON.stringify({
       prompt: prompt,
-      max_tokens: 150,
+      max_tokens: 300,
       n: 1,
       stop: null,
       temperature: 0.7,

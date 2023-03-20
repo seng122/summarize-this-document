@@ -15,6 +15,6 @@ document.getElementById('submit').addEventListener('click', async () => {
     }
   
     const summaryElement = document.getElementById('summary');
-    summaryElement.textContent = data.summary;
+    summaryElement.innerHTML = data.summary.replace(/\n/g, '<br>');
   });
   
