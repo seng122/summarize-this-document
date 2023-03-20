@@ -24,7 +24,7 @@ exports.handler = async function (event, context) {
   const data = await response.json();
 
   if (!data.choices || data.choices.length === 0) {
-    console.error('Unexpected API response:', data);
+    console.error('Unexpected API response:', JSON.stringify(data, null, 2));
     return {
       statusCode: 500,
       body: JSON.stringify({ error: 'Unable to get the summary.' }),
