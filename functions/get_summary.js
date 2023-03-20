@@ -4,7 +4,8 @@ exports.handler = async function (event, context) {
   const spNumber = event.queryStringParameters.spNumber;
   const apiKey = process.env.CHATGPT_API_KEY;
   const apiUrl = 'https://api.openai.com/v1/engines/davinci-codex/completions';
-  const prompt = `Summarize NIST Special Publication ${spNumber}:`;
+  const prompt = `Please provide a brief summary of the NIST Special Publication ${spNumber}, which is a document related to information security and privacy controls for federal information systems and organizations. The summary should be concise and easy to understand.`;
+
 
   const response = await fetch(apiUrl, {
     method: 'POST',
@@ -14,10 +15,10 @@ exports.handler = async function (event, context) {
     },
     body: JSON.stringify({
       prompt: prompt,
-      max_tokens: 300,
+      max_tokens: 500,
       n: 1,
       stop: null,
-      temperature: 0.7,
+      temperature: 1,
     }),
   });
 
