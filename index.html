@@ -1,19 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NIST Special Publication Summarizer</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIST SP Summarizer</title>
+  <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+  <script defer src="script.js"></script>
 </head>
 <body>
+  <header>
     <h1>NIST Special Publication Summarizer</h1>
-    <form id="summarizer-form">
-        <label for="sp-number">Enter NIST SP Number:</label>
-        <input type="text" id="sp-number" name="sp-number" required>
-        <button type="submit">Summarize</button>
-    </form>
-    <div id="summary"></div>
+  </header>
 
-    <script src="script.js"></script>
+  <main>
+    <div>
+      <label for="sp-number">Enter NIST SP Number:</label>
+      <input type="text" id="sp-number" placeholder="Example: 800-53">
+      <button id="submit">Get Summary</button>
+    </div>
+    
+    <div id="summary-container">
+      <h2>Summary</h2>
+      <p id="summary"></p>
+    </div>
+  </main>
 </body>
 </html>

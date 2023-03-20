@@ -1,20 +1,20 @@
-document.getElementById('summarizer-form').addEventListener('submit', async (event) => {
-    event.preventDefault();
+document.getElementById('submit').addEventListener('click', async () => {
     const spNumber = document.getElementById('sp-number').value;
-    const summaryElement = document.getElementById('summary');
-    summaryElement.textContent = 'Summarizing...';
   
-    try {
-      const summary = await getSummary(spNumber);
-      summaryElement.textContent = summary;
-    } catch (error) {
-      summaryElement.textContent = 'Error: Unable to get the summary.';
+    if (!spNumber) {
+      alert('Please enter a valid NIST SP number.');
+      return;
     }
-  });
   
-  async function getSummary(spNumber) {
-    const response = await fetch('/.netlify/functions/get_summary?spNumber=' + spNumber);
+    const response = await fetch(`/.netlify/functions/get_summary?spNumber=${encodeURIComponent(spNumber)}`);
     const data = await response.json();
-    return data.summary;
-  }
+  
+    if (data.error) {
+      alert('An error occurred while fetching the summary. Please try again later.');
+      return;
+    }
+  
+    const summaryElement = document.getElementById('summary');
+    summaryElement.textContent = data.summary;
+  });
   
